@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <h1>index页面</h1>
-    <el-button type="success">成功按钮</el-button>
+    <!-- 组件替换的位置 -->
+    <router-view></router-view>
   </div>
 </template>
 
