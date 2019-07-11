@@ -6,9 +6,12 @@ import ElementUi from 'element-ui'
 // 导入样式文件
 import 'element-ui/lib/theme-chalk/index.css'
 
+import axios from 'axios'
 // 默认回去加载索引文件  index.js  index.vue index.json
 // 在vue-cli创建的项目中 @前缀代表的是根路径 src目录
 import router from '@/router'
+// axios方法注册到vue原型上面
+Vue.prototype.$http = axios
 // 在全局范围注册组件(注册element-ui组件库)
 Vue.use(ElementUi)
 Vue.config.productionTip = false
