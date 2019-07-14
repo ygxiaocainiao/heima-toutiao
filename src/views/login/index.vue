@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { async } from 'q'
 export default {
   data () {
     // 校验逻辑
@@ -55,29 +56,42 @@ export default {
   },
   methods: {
     login () {
-      // 整体表单的校验
-      this.$refs.loginForm.validate(valid => {
+      // // 整体表单的校验
+      // this.$refs.loginForm.validate(valid => {
+      //   if (valid) {
+      //     // 校验成功
+      //     this.$http
+      //       .post('authorizations', this.loginForm)
+      //       .then(res => {
+      //         // res是响应对象 包含响应数据
+      //         const data = res.data
+      //         // 后台的返回的json内容 已将转换成了对象
+      //         console.log(data)
+      //         // 登录成功后:做什么事情?
+      //         // 1.跳转页面
+      //         // 2.保存登录状态
+      //         // 2.1保存登录后返回的用户信息,包含token
+      //         // 2.2使用sessionStorage来存储  关闭浏览器会话失效
+      //         window.sessionStorage.setItem('hm-toutiao', JSON.stringify(res.data.data))
+      //         this.$router.push('/')
+      //       })
+      //       .catch(() => {
+      //         // 提示错误  使用组件 消息提示组件
+      //         this.$message.error('用户名或密码错误')
+      //       })
+      //   }
+      // })
+
+      // axios-结合async与await使用
+      this.$refs.loginForm.validate(async valid => {
         if (valid) {
-          // 校验成功
-          this.$http
-            .post('authorizations', this.loginForm)
-            .then(res => {
-              // res是响应对象 包含响应数据
-              const data = res.data
-              // 后台的返回的json内容 已将转换成了对象
-              console.log(data)
-              // 登录成功后:做什么事情?
-              // 1.跳转页面
-              // 2.保存登录状态
-              // 2.1保存登录后返回的用户信息,包含token
-              // 2.2使用sessionStorage来存储  关闭浏览器会话失效
-              window.sessionStorage.setItem('hm-toutiao', JSON.stringify(res.data.data))
-              this.$router.push('/')
-            })
-            .catch(() => {
-              // 提示错误  使用组件 消息提示组件
-              this.$message.error('用户名或密码错误')
-            })
+          try {
+            const res = await this.$http.post('authorizations', this.loginForm)
+            window.sessionStorage.setItem('hm-toutiao', JSON.stringify(res.data.data))
+            this.$router.push('/')
+          } catch (err) {
+            this.$message.error('用户名或密码错误')
+          }
         }
       })
     }
