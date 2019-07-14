@@ -6,7 +6,7 @@ import ElementUi from 'element-ui'
 // 导入样式文件
 import 'element-ui/lib/theme-chalk/index.css'
 
-import axios from 'axios'
+import axios from '@/api/axios.js'
 // 默认回去加载索引文件  index.js  index.vue index.json
 // 在vue-cli创建的项目中 @前缀代表的是根路径 src目录
 import router from '@/router'

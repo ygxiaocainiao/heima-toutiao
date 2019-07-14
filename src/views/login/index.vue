@@ -60,7 +60,7 @@ export default {
         if (valid) {
           // 校验成功
           this.$http
-            .post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
+            .post('authorizations', this.loginForm)
             .then(res => {
               // res是响应对象 包含响应数据
               const data = res.data
