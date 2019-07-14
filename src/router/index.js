@@ -10,6 +10,8 @@ import Home from '@/views/home'
 import Welcome from '@/views/welcome/index.vue'
 // 导入404组件
 import Notfund from '@/views/404'
+// 导入article组件
+import Article from '@/views/article'
 // 注册全局
 Vue.use(VueRouter)
 // 初始化router对象(配置路由规则)
@@ -20,10 +22,12 @@ const router = new VueRouter({
     { path: '/',
       component: Home,
       children: [
-        { name: 'welcom', path: '/', component: Welcome }
+        { name: 'welcom', path: '/', component: Welcome },
+        { path: '/article', name: 'article', component: Article }
       ]
     },
     { path: '*', name: '404', component: Notfund }
+
 
   ]
 })
