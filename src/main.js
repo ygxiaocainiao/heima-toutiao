@@ -10,6 +10,10 @@ import axios from '@/api/axios.js'
 // 默认回去加载索引文件  index.js  index.vue index.json
 // 在vue-cli创建的项目中 @前缀代表的是根路径 src目录
 import router from '@/router'
+
+// 使用公共部分插件
+import components from '@/components'
+Vue.use(components)
 // axios方法注册到vue原型上面
 Vue.prototype.$http = axios
 // 在全局范围注册组件(注册element-ui组件库)
