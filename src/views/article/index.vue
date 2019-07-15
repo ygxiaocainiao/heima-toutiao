@@ -50,11 +50,8 @@
 </template>
 
 <script>
-import MyTest from '@/components/chacaoxuxi'
 export default {
-  components: {
-    MyTest
-  },
+
   data () {
     return {
       reqParams: {
@@ -67,6 +64,18 @@ export default {
       channelOptions: [{ name: 'java', id: 1 }],
       // 日期控件的数据
       dateValues: []
+    }
+  },
+  created () {
+    // 获取频道数据
+    this.getChannelOptions()
+  },
+  methods: {
+    async getChannelOptions () {
+      // const o = {data:{}};const {data} = o;一层解构
+      // const res = {data:{data:{channels:[]}}}; 多层解构  const {data:{data:data}}
+      const { data: { data } } = await this.$http('channels')
+      this.channelOptions = data.channels
     }
   }
 }
