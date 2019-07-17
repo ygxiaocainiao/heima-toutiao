@@ -12,6 +12,8 @@ import Welcome from '@/views/welcome/index.vue'
 import Notfund from '@/views/404'
 // 导入article组件
 import Article from '@/views/article'
+// 导入素材管理
+import Image from '@/views/image'
 // 注册全局
 Vue.use(VueRouter)
 // 初始化router对象(配置路由规则)
@@ -23,11 +25,11 @@ const router = new VueRouter({
       component: Home,
       children: [
         { name: 'welcom', path: '/', component: Welcome },
-        { path: '/article', name: 'article', component: Article }
+        { path: '/article', name: 'article', component: Article },
+        { path: '/image', name: 'image', component: Image }
       ]
     },
     { path: '*', name: '404', component: Notfund }
-
 
   ]
 })
