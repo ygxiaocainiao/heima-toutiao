@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { async } from 'q'
+
 export default {
   data () {
     // 校验逻辑
@@ -37,7 +37,7 @@ export default {
     return {
       // 表单对应对象
       loginForm: {
-        mobile: '13911111111',
+        mobile: '17631001452',
         code: '246810'
       },
       checkbox: true,
