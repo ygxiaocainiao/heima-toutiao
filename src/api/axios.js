@@ -1,21 +1,11 @@
 import axios from 'axios'
-import JSONBig from 'json-bigint'
 
 const instance = axios.create({
-  baseURL: 'http://ttapi.research.itcast.cn/mp/v1_0/',
-  //   Headers: {
-  //     Authorization: 'Bearer ' +
-  //         JSON.parse(window.sessionStorage.getItem('hm-toutiao')).token
-  //   }
-
-  transformResponse: [(data) => {
-    // 处理格式
-    // data可能没有数据null 严谨判断
-    if (data) {
-      return JSONBig.parse(data)
-    }
-    return data
-  }]
+  baseURL: 'http://ttapi.research.itcast.cn/mp/v1_0/'
+//   Headers: {
+//     Authorization: 'Bearer ' +
+//         JSON.parse(window.sessionStorage.getItem('hm-toutiao')).token
+//   }
 })
 
 // 添加请求拦截器
@@ -43,7 +33,7 @@ instance.interceptors.response.use(response => {
   // 做自己的事情 错误的时候
   // 如果响应状态码是401 拦截到登录页面
   // error.response.status  状态码
-  if (error.response && error.response.status === 401) {
+  if (error.response.status === 401) {
     // hash是location提供的操作 地址栏的#后的地址的属性
     location.hash = '#/login'
   }
