@@ -13,6 +13,9 @@ import router from '@/router'
 
 // 使用公共部分插件
 import components from '@/components'
+
+// 导入样式less文件
+import '@/styles/index.less'
 Vue.use(components)
 // axios方法注册到vue原型上面
 Vue.prototype.$http = axios
